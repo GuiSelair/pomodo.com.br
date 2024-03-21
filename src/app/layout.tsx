@@ -1,22 +1,23 @@
 import "@/styles/globals.css";
 
-import { cn } from "@/lib/utils";
-
 import type { Metadata } from "next";
-import { fonts } from "@/constants/fonts"
+
+import { cn } from "@/lib/utils";
+import { fonts } from "@/constants/fonts";
+import { Header } from "@/components/header";
 
 export const metadata: Metadata = {
-  title: "pomodo - Focus on your work, not the clock",
+	title: "pomodo - Focus on your work, not the clock",
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="pt-BR">
-      <body 
+	return (
+		<html lang="pt-BR">
+			<body
 				className={cn(
 					"min-h-screen bg-background font-sans antialiased",
 					fonts.nunitoSans.variable,
@@ -24,8 +25,22 @@ export default function RootLayout({
 					fonts.inter.variable
 				)}
 			>
-				{children}
+				<div
+					className="
+						min-h-screen
+						min-w-screen
+						flex 
+						flex-col 
+						items-center 
+						bg-pomodo-gray-500
+						py-10 
+						px-14
+					"
+				>
+					<Header />
+					{children}
+				</div>
 			</body>
-    </html>
-  );
+		</html>
+	);
 }
