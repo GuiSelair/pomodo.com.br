@@ -14,7 +14,7 @@ export function SecondaryNavigation() {
 		border
 		border-solid
 		border-transparent
-		hover:-translate-y-0.5
+		hover:translate-y-0.5
 		hover:bg-pomodo-purple-400
 		hover:border-pomodo-pink-300
 		transition-transform
