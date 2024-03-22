@@ -13,5 +13,5 @@ Uma aplicação para ajudar no seu foco utilizando a técnica pomodoro
 - [ ] O sistema deverá armazenar qualquer informação necessário no local-storage do navegador.
 - [ ] O sistema deverá utilizar o Google Analytics 4 para captura de métricas dos usuários.
 - [x] :white_check_mark: O sistema deverá ser construido utilizando o framework NextJS na sua versão 14, utilizando o novo sistema de rotas e server components.
-- [ ] O sistema deverá ser construído utilizando a biblioteca shadcn/ui.
+- [x] :white_check_mark: O sistema deverá ser construído utilizando a biblioteca shadcn/ui.
 - [ ] O sistema deverá utilizar a biblioteca Redux para compartilhamento de estados globais.
