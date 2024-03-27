@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { fonts } from "@/constants/fonts";
 import { Header } from "@/components/header";
 import { BackgroundBlur } from "@/components/background-blur";
+import { ReduxProvider } from "@/redux/provider";
 
 export const metadata: Metadata = {
 	title: "pomodo - Focus on your work, not the clock",
@@ -41,7 +42,7 @@ export default function RootLayout({
 				>
 					<Header />
 					<BackgroundBlur />
-					{children}
+					<ReduxProvider>{children}</ReduxProvider>
 				</div>
 			</body>
 		</html>
