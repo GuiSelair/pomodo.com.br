@@ -3,12 +3,12 @@ import { actions } from "./actions";
 
 export interface PomodoroState {
 	isActive: boolean;
-	timer: number;
+	defaultPomodoroTime: number;
 }
 
 const initialState: PomodoroState = {
 	isActive: false,
-	timer: 0,
+	defaultPomodoroTime: 60 * 25,
 };
 
 export const pomodoroSlice = createSlice({
