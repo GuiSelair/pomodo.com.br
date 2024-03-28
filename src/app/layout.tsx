@@ -2,7 +2,7 @@ import "@/styles/globals.css";
 
 import type { Metadata } from "next";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/helpers/utils";
 import { fonts } from "@/constants/fonts";
 import { Header } from "@/components/header";
 import { BackgroundBlur } from "@/components/background-blur";
