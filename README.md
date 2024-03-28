@@ -4,7 +4,7 @@ Uma aplicação para ajudar no seu foco utilizando a técnica pomodoro
 
 ### Requisitos funcionais (MVP)
 
-- [ ] O usuário deve poder iniciar o cronometro, pausar e resetar a qualquer momento.
+- [x] :white_check_mark: O usuário deve poder iniciar o cronometro, pausar e resetar a qualquer momento.
 - [ ] O usuário deve poder pausar a música do player a qualquer momento.
 - [ ] O usuário deve poder desativar o player de música.
 - [ ] Quando o cronometro estiver ativo, deve estar tocando a música no player, se o player não estiver desativado.
