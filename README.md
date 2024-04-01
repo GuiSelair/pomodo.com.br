@@ -5,6 +5,8 @@ Uma aplicação para ajudar no seu foco utilizando a técnica pomodoro
 ### Requisitos funcionais (MVP)
 
 - [x] :white_check_mark: O usuário deve poder iniciar o cronometro, pausar e resetar a qualquer momento.
+- [ ] Ao chegar no final do timer de 25 minutos, deve ser iniciado um timer de descanso. Este timer deve ter duranção de 5 minutos.
+- [ ] Quando 4 timers de descanso foram completos, o próximo deverá ter duração de 15 minutos. Após ele, o contador deve resetar e voltar para 5 minutos.
 - [ ] O usuário deve poder pausar a música do player a qualquer momento.
 - [ ] O usuário deve poder desativar o player de música.
 - [ ] Quando o cronometro estiver ativo, deve estar tocando a música no player, se o player não estiver desativado.
