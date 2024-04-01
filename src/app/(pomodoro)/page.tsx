@@ -13,7 +13,9 @@ import { formatTimerSecondToMinutes } from "@/helpers/formatTimer";
 export default function PomodoroPage() {
 	const { handleStartTime, handleStopTime, handlePauseTime, timer } =
 		usePomodoro();
-	const isPomodoroActive = useAppSelector((state) => state.pomodoro.isActive);
+	const pomodoroState = useAppSelector((state) => state.pomodoro.state);
+
+	const isPomodoroActive = pomodoroState === "running";
 
 	return (
 		<main className="flex flex-col items-center justify-center h-[calc(100vh-10rem)]">

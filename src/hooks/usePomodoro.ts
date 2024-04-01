@@ -5,17 +5,19 @@ import { useRef, useState, useEffect } from "react";
 export function usePomodoro() {
 	const intervalTimerRef = useRef<NodeJS.Timeout>();
 	const dispatch = useAppDispatch();
-	const { defaultPomodoroTime, isActive } = useAppSelector(
+	const { defaultPomodoroTime, state } = useAppSelector(
 		(state) => state.pomodoro
 	);
-	const [timer, setTimer] = useState(defaultPomodoroTime);
+	const [timer, setTimer] = useState(3);
+
+	const isActive = state === "running";
 
 	function handleStartTime() {
 		dispatch(pomodoroActions.start());
 	}
 
 	function handlePauseTime() {
-		dispatch(pomodoroActions.stop());
+		dispatch(pomodoroActions.pause());
 	}
 
 	function handleStopTime() {
@@ -24,23 +26,28 @@ export function usePomodoro() {
 	}
 
 	function finishPomodoro() {
-		dispatch(pomodoroActions.stop());
+		console.log("Pomodoro finalizado");
+		dispatch(pomodoroActions.break());
 		setTimer(defaultPomodoroTime);
 	}
 
-	/** Effect responsável pelo timer. */
+	function pomodoroTimer() {
+		intervalTimerRef.current = setInterval(() => {
+			setTimer((prev) => {
+				if (prev === 0) {
+					clearInterval(intervalTimerRef.current);
+					return 0;
+				}
+
+				return prev - 1;
+			});
+		}, 1000);
+	}
+
+	/** Effect responsável pelo acionamento do timer. */
 	useEffect(() => {
 		if (isActive) {
-			intervalTimerRef.current = setInterval(() => {
-				setTimer((prev) => {
-					if (prev === 0) {
-						clearInterval(intervalTimerRef.current);
-						return 0;
-					}
-
-					return prev - 1;
-				});
-			}, 1000);
+			pomodoroTimer();
 		}
 
 		return () => {
@@ -48,6 +55,7 @@ export function usePomodoro() {
 		};
 	}, [isActive]);
 
+	/** Effect responsável por finalizar o timer quando ele chegar a zero. */
 	useEffect(() => {
 		if (isActive && timer === 0) {
 			finishPomodoro();

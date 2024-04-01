@@ -2,12 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import { actions } from "./actions";
 
 export interface PomodoroState {
-	isActive: boolean;
+	state: "running" | "break" | "stopped" | "paused";
 	defaultPomodoroTime: number;
 }
 
 const initialState: PomodoroState = {
-	isActive: false,
+	state: "stopped",
 	defaultPomodoroTime: 60 * 25,
 };
 
