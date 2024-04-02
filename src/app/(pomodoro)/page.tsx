@@ -14,6 +14,7 @@ export default function PomodoroPage() {
 	const { handleStartTime, handleStopTime, handlePauseTime, timer } =
 		usePomodoro();
 	const pomodoroState = useAppSelector((state) => state.pomodoro.state);
+	const isTakeBreak = useAppSelector((state) => state.pomodoro.isTakeBreak);
 
 	const isPomodoroActive = pomodoroState === "running";
 
@@ -28,9 +29,11 @@ export default function PomodoroPage() {
 						<Button className="w-[112px] h-20" onClick={handlePauseTime}>
 							<PauseIcon className="w-10 h-10 text-pomodo-pink-300" />
 						</Button>
-						<Button className="w-[112px] h-20" onClick={handleStopTime}>
-							<TimeResetIcon className="w-10 h-10 text-pomodo-pink-300" />
-						</Button>
+						{!isTakeBreak && (
+							<Button className="w-[112px] h-20" onClick={handleStopTime}>
+								<TimeResetIcon className="w-10 h-10 text-pomodo-pink-300" />
+							</Button>
+						)}
 					</div>
 				) : (
 					<Button className="w-[112px] h-20" onClick={handleStartTime}>

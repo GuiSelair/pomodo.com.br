@@ -1,14 +1,20 @@
+import { useRef, useState, useEffect } from "react";
+
 import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { pomodoroActions } from "@/redux/modules/pomodoro";
-import { useRef, useState, useEffect } from "react";
 
 export function usePomodoro() {
 	const intervalTimerRef = useRef<NodeJS.Timeout>();
 	const dispatch = useAppDispatch();
-	const { defaultPomodoroTime, state } = useAppSelector(
-		(state) => state.pomodoro
-	);
-	const [timer, setTimer] = useState(3);
+	const {
+		defaultPomodoroTime,
+		defaultPomodoroBreakTime,
+		defaultPomodoroLongBreakTime,
+		state,
+		isTakeBreak,
+		takeBreakCount,
+	} = useAppSelector((state) => state.pomodoro);
+	const [timer, setTimer] = useState(defaultPomodoroTime);
 
 	const isActive = state === "running";
 
@@ -21,14 +27,12 @@ export function usePomodoro() {
 	}
 
 	function handleStopTime() {
-		dispatch(pomodoroActions.stop());
+		dispatch(pomodoroActions.stop({ interrupt: true }));
 		setTimer(defaultPomodoroTime);
 	}
 
 	function finishPomodoro() {
-		console.log("Pomodoro finalizado");
-		dispatch(pomodoroActions.break());
-		setTimer(defaultPomodoroTime);
+		dispatch(pomodoroActions.stop({ interrupt: false }));
 	}
 
 	function pomodoroTimer() {
@@ -43,6 +47,19 @@ export function usePomodoro() {
 			});
 		}, 1000);
 	}
+
+	/** Effect responsável por intercalar entre o intervalo e o timer principal quando o contador chegar ao zero. */
+	useEffect(() => {
+		if (isTakeBreak) {
+			setTimer(
+				takeBreakCount === 4
+					? defaultPomodoroLongBreakTime
+					: defaultPomodoroBreakTime
+			);
+		} else {
+			setTimer(defaultPomodoroTime);
+		}
+	}, [isTakeBreak]);
 
 	/** Effect responsável pelo acionamento do timer. */
 	useEffect(() => {
