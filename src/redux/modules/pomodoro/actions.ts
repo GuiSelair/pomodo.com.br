@@ -16,6 +16,7 @@ export type IPomodoroActions = Record<
 export const actions: IPomodoroActions = {
 	[EPomodoroActionTypes.START]: (state) => {
 		state.state = "running";
+		new Audio("/audios/tap.mp3").play();
 	},
 	[EPomodoroActionTypes.STOP]: (state, action) => {
 		const payload = action.payload as { interrupt: boolean };
@@ -26,6 +27,7 @@ export const actions: IPomodoroActions = {
 			if (state.isTakeBreak) {
 				state.isTakeBreak = false;
 				state.takeBreakCount += 1;
+				new Audio("/audios/finish-break.wav").play();
 				return;
 			}
 
@@ -34,9 +36,13 @@ export const actions: IPomodoroActions = {
 			}
 
 			state.isTakeBreak = true;
+			new Audio("/audios/finish-pomodoro.wav").play();
+			return;
 		}
+		new Audio("/audios/tap.mp3").play();
 	},
 	[EPomodoroActionTypes.PAUSE]: (state) => {
 		state.state = "paused";
+		new Audio("/audios/tap.mp3").play();
 	},
 };
