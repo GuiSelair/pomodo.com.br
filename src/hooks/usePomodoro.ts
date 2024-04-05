@@ -2,9 +2,10 @@ import { useRef, useState, useEffect } from "react";
 
 import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { pomodoroActions } from "@/redux/modules/pomodoro";
+import { PomodoroWorkerMessage } from "@/pomodoro.worker";
 
 export function usePomodoro() {
-	const intervalTimerRef = useRef<NodeJS.Timeout>();
+	const pomodoroWorkerRef = useRef<Worker>();
 	const dispatch = useAppDispatch();
 	const {
 		defaultPomodoroTime,
@@ -24,28 +25,46 @@ export function usePomodoro() {
 
 	function handlePauseTime() {
 		dispatch(pomodoroActions.pause());
+		if (pomodoroWorkerRef.current) {
+			pomodoroWorkerRef.current.postMessage({
+				eventType: "pauseTimer",
+				initialTimeValue: timer,
+			} as PomodoroWorkerMessage);
+		}
 	}
 
 	function handleStopTime() {
 		dispatch(pomodoroActions.stop({ interrupt: true }));
-		setTimer(defaultPomodoroTime);
+		if (pomodoroWorkerRef.current) {
+			pomodoroWorkerRef.current.postMessage({
+				eventType: "stopTimer",
+				initialTimeValue: defaultPomodoroTime,
+			} as PomodoroWorkerMessage);
+		}
 	}
 
 	function finishPomodoro() {
 		dispatch(pomodoroActions.stop({ interrupt: false }));
 	}
 
-	function pomodoroTimer() {
-		intervalTimerRef.current = setInterval(() => {
-			setTimer((prev) => {
-				if (prev === 0) {
-					clearInterval(intervalTimerRef.current);
-					return 0;
-				}
+	function initializePomodoroTimer() {
+		if (pomodoroWorkerRef.current) {
+			pomodoroWorkerRef.current.postMessage({
+				eventType: "startTimer",
+				initialTimeValue: timer,
+			} as PomodoroWorkerMessage);
+		}
+	}
 
-				return prev - 1;
-			});
-		}, 1000);
+	function listenPomodoroWorker() {
+		if (pomodoroWorkerRef.current) {
+			pomodoroWorkerRef.current.onmessage = (message) => {
+				const { type, timer } = message.data;
+				if (type === "timer") {
+					setTimer(timer);
+				}
+			};
+		}
 	}
 
 	/** Effect responsável por intercalar entre o intervalo e o timer principal quando o contador chegar ao zero. */
@@ -64,12 +83,8 @@ export function usePomodoro() {
 	/** Effect responsável pelo acionamento do timer. */
 	useEffect(() => {
 		if (isActive) {
-			pomodoroTimer();
+			initializePomodoroTimer();
 		}
-
-		return () => {
-			clearInterval(intervalTimerRef.current);
-		};
 	}, [isActive]);
 
 	/** Effect responsável por finalizar o timer quando ele chegar a zero. */
@@ -78,6 +93,19 @@ export function usePomodoro() {
 			finishPomodoro();
 		}
 	}, [timer, isActive]);
+
+	/** Effect responsável por inicializar o Web Worker responsável pelo processamento do timer. */
+	useEffect(() => {
+		pomodoroWorkerRef.current = new Worker(
+			new URL("../pomodoro.worker.ts", import.meta.url)
+		);
+
+		listenPomodoroWorker();
+
+		return () => {
+			pomodoroWorkerRef.current?.terminate();
+		};
+	}, []);
 
 	return {
 		handleStartTime,
