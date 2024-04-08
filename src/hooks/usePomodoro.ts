@@ -94,7 +94,7 @@ export function usePomodoro() {
 		}
 	}, [timer, isActive]);
 
-	/** Effect responsável por inicializar o Web Worker responsável pelo processamento do timer. */
+	/** Effect responsável por inicializar o Web Worker responsável pelo processamento do timer e ouvi-lo. */
 	useEffect(() => {
 		pomodoroWorkerRef.current = new Worker(
 			new URL("../pomodoro.worker.ts", import.meta.url)
