@@ -16,7 +16,6 @@ export function pomodoroTimer({
 
 	return setInterval(() => {
 		if (timer === 0) {
-			onTick(timer);
 			onFinish();
 			return;
 		}
