@@ -8,11 +8,15 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
+import { Slider } from "@/components/ui/slider";
+
 import { SecondaryNavigationButton } from "./secondary-navigation-button";
-import { Button } from "../ui/button";
-import { Slider } from "../ui/slider";
+import { usePlayer } from "@/hooks/use-player";
 
 export function PlayerPopover() {
+	const { title, play } = usePlayer();
+	console.log({ title });
 	return (
 		<Popover>
 			<PopoverTrigger asChild>
@@ -29,18 +33,19 @@ export function PlayerPopover() {
 					flex-col
 				bg-pomodo-gray-400 
 					border-none
-					w-72
-					h-44
+					min-w-72
+					w-auto
 					p-3
 					text-white
 				`}
 			>
-				<div className="flex flex-1">
+				<div className="flex flex-col flex-1 gap-1 mb-5">
 					<span className="text-sm text-pomodo-pink-300">Reproduzindo:</span>
+					{title && <span className="text-xs font-light">{title}</span>}
 				</div>
 				<footer className="mt-auto flex justify-between items-center gap-3">
 					<div>
-						<Button size="icon">
+						<Button size="icon" onClick={play}>
 							<PauseIcon className="w-6 h-6 text-pomodo-pink-300" />
 						</Button>
 					</div>
