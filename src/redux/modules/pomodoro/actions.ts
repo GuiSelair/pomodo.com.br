@@ -8,12 +8,12 @@ export enum EPomodoroActionTypes {
 	PAUSE = "pause",
 }
 
-export type IPomodoroActions = Record<
+export type PomodoroActions = Record<
 	EPomodoroActionTypes,
 	CaseReducer<PomodoroState, PayloadAction<undefined | Record<string, unknown>>>
 >;
 
-export const actions: IPomodoroActions = {
+export const actions: PomodoroActions = {
 	[EPomodoroActionTypes.START]: (state) => {
 		state.state = "running";
 		new Audio("/audios/tap.mp3").play();
@@ -23,6 +23,7 @@ export const actions: IPomodoroActions = {
 
 		state.state = "stopped";
 
+		/** Quando o usuário clicar no botão de resetar timer, a chave `interrupt` vira. */
 		if (!payload.interrupt) {
 			if (state.isTakeBreak) {
 				state.isTakeBreak = false;
@@ -31,7 +32,8 @@ export const actions: IPomodoroActions = {
 				return;
 			}
 
-			if (state.takeBreakCount === 5) {
+			const shouldResetBreakCount = state.takeBreakCount === 5;
+			if (shouldResetBreakCount) {
 				state.takeBreakCount = 0;
 			}
 

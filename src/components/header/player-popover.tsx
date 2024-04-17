@@ -2,7 +2,9 @@ import {
 	MusicNotesSimple as MusicNotesSimpleIcon,
 	Pause as PauseIcon,
 	SpeakerSimpleX as SpeakerSimpleXIcon,
+	Play as PlayIcon,
 } from "@phosphor-icons/react";
+
 import {
 	Popover,
 	PopoverContent,
@@ -10,13 +12,16 @@ import {
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
+import { useAppDispatch, useAppSelector } from "@/redux";
+import { EPlayerState, playerActions } from "@/redux/modules/player";
 
 import { SecondaryNavigationButton } from "./secondary-navigation-button";
-import { usePlayer } from "@/hooks/use-player";
 
 export function PlayerPopover() {
-	const { title, play } = usePlayer();
-	console.log({ title });
+	const playerState = useAppSelector((ctx) => ctx.player.playerState);
+	const title = useAppSelector((ctx) => ctx.player.title);
+	const dispatch = useAppDispatch();
+
 	return (
 		<Popover>
 			<PopoverTrigger asChild>
@@ -45,13 +50,41 @@ export function PlayerPopover() {
 				</div>
 				<footer className="mt-auto flex justify-between items-center gap-3">
 					<div>
-						<Button size="icon" onClick={play}>
-							<PauseIcon className="w-6 h-6 text-pomodo-pink-300" />
+						<Button
+							size="icon"
+							onClick={
+								playerState === EPlayerState.Playing
+									? () => dispatch(playerActions.pause())
+									: () => dispatch(playerActions.play())
+							}
+						>
+							{playerState === EPlayerState.Playing ? (
+								<PauseIcon className="w-6 h-6 text-pomodo-pink-300" />
+							) : (
+								<PlayIcon className="w-6 h-6 text-pomodo-pink-300" />
+							)}
 						</Button>
 					</div>
 					<div className="flex items-center gap-2">
-						<Slider defaultValue={[33]} max={100} step={1} className="w-14" />
-						<Button size="icon" variant="ghost" className="w-6 h-6">
+						<Slider
+							defaultValue={[33]}
+							max={100}
+							step={1}
+							className="w-14"
+							onValueChange={([number]) =>
+								dispatch(
+									playerActions.changeVolume(
+										number as unknown as Record<string, unknown>
+									)
+								)
+							}
+						/>
+						<Button
+							size="icon"
+							variant="ghost"
+							className="w-6 h-6"
+							onClick={() => dispatch(playerActions.mute())}
+						>
 							<SpeakerSimpleXIcon className="w-4 h-4 text-pomodo-pink-300" />
 						</Button>
 					</div>

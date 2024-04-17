@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 
 import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { pomodoroActions } from "@/redux/modules/pomodoro";
+import { playerActions } from "@/redux/modules/player";
 import { PomodoroWorkerMessage } from "@/pomodoro.worker";
 
 export function usePomodoro() {
@@ -21,10 +22,12 @@ export function usePomodoro() {
 
 	function handleStartTime() {
 		dispatch(pomodoroActions.start());
+		dispatch(playerActions.play());
 	}
 
 	function handlePauseTime() {
 		dispatch(pomodoroActions.pause());
+		dispatch(playerActions.pause());
 		if (pomodoroWorkerRef.current) {
 			pomodoroWorkerRef.current.postMessage({
 				eventType: "pauseTimer",
@@ -35,6 +38,7 @@ export function usePomodoro() {
 
 	function handleStopTime() {
 		dispatch(pomodoroActions.stop({ interrupt: true }));
+		dispatch(playerActions.pause());
 		if (pomodoroWorkerRef.current) {
 			pomodoroWorkerRef.current.postMessage({
 				eventType: "stopTimer",
@@ -45,6 +49,7 @@ export function usePomodoro() {
 
 	function finishPomodoro() {
 		dispatch(pomodoroActions.stop({ interrupt: false }));
+		dispatch(playerActions.pause());
 	}
 
 	function initializePomodoroTimer() {

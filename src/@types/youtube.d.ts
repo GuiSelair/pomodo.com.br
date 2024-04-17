@@ -9,14 +9,19 @@ interface IYoutubePlayer {
 	videoTitle: string;
 	setVolume: (volume: number) => void;
 	destroy: () => void;
+	getPlayerState: () => number;
 }
 
+interface IYoutubePlayerEvent {
+	data: unknown;
+	target: IYoutubePlayer;
+}
 interface IYoutubePlayerOptions {
 	height: string;
 	width: string;
 	videoId: string;
 	events?: {
-		onReady?: (target: IYoutubePlayer, data: unknown) => void;
+		onReady?: (target: IYoutubePlayerEvent) => void;
 	};
 }
 

@@ -7,15 +7,13 @@ import {
 } from "@phosphor-icons/react";
 
 import { Button } from "@/components/ui/button";
-import { usePomodoro } from "@/hooks/usePomodoro";
+import { usePomodoro } from "@/hooks/use-pomodoro";
 import { useAppSelector } from "@/redux";
 import { formatTimerSecondToMinutes } from "@/helpers/formatTimer";
-import { usePlayer } from "@/hooks/use-player";
 
 export default function PomodoroPage() {
 	const { handleStartTime, handleStopTime, handlePauseTime, timer } =
 		usePomodoro();
-	const { play, pause } = usePlayer();
 	const pomodoroState = useAppSelector((state) => state.pomodoro.state);
 	const isTakeBreak = useAppSelector((state) => state.pomodoro.isTakeBreak);
 
@@ -33,7 +31,6 @@ export default function PomodoroPage() {
 							className="w-[112px] h-20"
 							onClick={() => {
 								handlePauseTime();
-								pause();
 							}}
 						>
 							<PauseIcon className="w-10 h-10 text-pomodo-pink-300" />
@@ -48,7 +45,6 @@ export default function PomodoroPage() {
 					<Button
 						className="w-[112px] h-20"
 						onClick={() => {
-							play();
 							handleStartTime();
 						}}
 					>
