@@ -22,7 +22,9 @@ export function usePomodoro() {
 
 	function handleStartTime() {
 		dispatch(pomodoroActions.start());
-		dispatch(playerActions.play());
+		if (!isTakeBreak) {
+			dispatch(playerActions.play());
+		}
 	}
 
 	function handlePauseTime() {
