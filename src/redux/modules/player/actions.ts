@@ -16,6 +16,8 @@ export enum EPlayerActionTypes {
 	CHANGE_VOLUME = "changeVolume",
 	MUTE = "mute",
 	UNMUTE = "unmute",
+	TOGGLE_MUTE = "toggleMute",
+	TOOGLE_PLAY = "togglePlay",
 }
 
 export type PlayerActions = Record<
@@ -46,11 +48,40 @@ export const actions: PlayerActions = {
 	[EPlayerActionTypes.CHANGE_VOLUME]: (state, action) => {
 		const volume = action.payload?.volume as number;
 		state.player?.setVolume(volume);
+
+		if (volume === 0) {
+			state.isMuted = true;
+			return;
+		}
+
+		state.isMuted = false;
 	},
 	[EPlayerActionTypes.MUTE]: (state) => {
 		state.player?.mute();
+		state.isMuted = true;
 	},
 	[EPlayerActionTypes.UNMUTE]: (state) => {
 		state.player?.unMute();
+		state.isMuted = false;
+	},
+	[EPlayerActionTypes.TOGGLE_MUTE]: (state) => {
+		if (state.isMuted) {
+			state.player?.unMute();
+			state.isMuted = false;
+			return;
+		}
+
+		state.player?.mute();
+		state.isMuted = true;
+	},
+	[EPlayerActionTypes.TOOGLE_PLAY]: (state) => {
+		if (state.playerState === EPlayerState.Playing) {
+			state.player?.pauseVideo();
+			state.playerState = EPlayerState.Paused;
+			return;
+		}
+
+		state.player?.playVideo();
+		state.playerState = EPlayerState.Playing;
 	},
 };

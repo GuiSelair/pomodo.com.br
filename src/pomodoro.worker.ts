@@ -1,4 +1,4 @@
-import { pomodoroTimer, IPomodoroTimer } from "./helpers/pomodoroTimer";
+import { pomodoroTimer, IPomodoroTimer } from "./helpers/pomodoro-timer";
 
 export type PomodoroWorkerMessage = Omit<IPomodoroTimer, "onTick" | "onFinish">;
 

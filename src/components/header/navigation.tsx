@@ -7,7 +7,7 @@ import {
 	NavigationMenuItem,
 	NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import { EApplicationPaths } from "@/constants/applicationPaths";
+import { EApplicationPaths } from "@/constants/application-paths";
 
 type NavigationItem = {
 	href: string;

@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 
-import { useAppDispatch } from "@/redux";
+import { useAppDispatch, useAppSelector } from "@/redux";
 import { playerActions } from "@/redux/modules/player";
 
 export function YoutubePlayer() {
 	const dispatch = useAppDispatch();
+	const player = useAppSelector((ctx) => ctx.player.player);
 
 	useEffect(() => {
 		const tag = document.createElement("script");
@@ -16,7 +17,7 @@ export function YoutubePlayer() {
 		window.onYouTubeIframeAPIReady = () => {
 			new YT.Player("youtube-player", {
 				height: "200",
-				width: "200",
+				width: "400",
 				videoId: "HGp7iu5XgCg",
 				events: {
 					onReady: ({ target }) => {
@@ -27,13 +28,13 @@ export function YoutubePlayer() {
 				},
 			});
 		};
-		// return () => {
-		// 	if (player) {
-		// 		console.log("destroying player");
-		// 		player.destroy();
-		// 	}
-		// };
-	}, []);
+
+		return () => {
+			if (player) {
+				player.destroy();
+			}
+		};
+	}, [player]);
 
 	return <div id="youtube-player" className="hidden" />;
 }

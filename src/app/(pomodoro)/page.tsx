@@ -9,7 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { usePomodoro } from "@/hooks/use-pomodoro";
 import { useAppSelector } from "@/redux";
-import { formatTimerSecondToMinutes } from "@/helpers/formatTimer";
+import { formatTimerSecondToMinutes } from "@/helpers/format-timer";
 
 export default function PomodoroPage() {
 	const { handleStartTime, handleStopTime, handlePauseTime, timer } =

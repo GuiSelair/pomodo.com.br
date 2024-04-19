@@ -6,6 +6,7 @@ export interface PlayerState {
 	player: IYoutubePlayer | null;
 	title?: string;
 	playerState: EPlayerState;
+	isMuted?: boolean;
 }
 
 const initialState: PlayerState = {

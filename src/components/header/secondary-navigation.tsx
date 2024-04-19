@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Sliders as SlidersIcon } from "@phosphor-icons/react";
 
-import { EApplicationPaths } from "@/constants/applicationPaths";
+import { EApplicationPaths } from "@/constants/application-paths";
+
 import { SecondaryNavigationButton } from "./secondary-navigation-button";
 import { PlayerPopover } from "./player-popover";
 
