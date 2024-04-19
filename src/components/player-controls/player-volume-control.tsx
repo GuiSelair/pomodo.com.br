@@ -12,6 +12,7 @@ import { Slider } from "../ui/slider";
 export function PlayerVolumeControl() {
 	const dispatch = useAppDispatch();
 	const isMuted = useAppSelector((ctx) => ctx.player.isMuted);
+	const volume = useAppSelector((ctx) => ctx.player.volume);
 
 	const handleVolumeChange = ([value]: number[]) => {
 		dispatch(
@@ -24,7 +25,7 @@ export function PlayerVolumeControl() {
 	return (
 		<div className="flex items-center gap-2">
 			<Slider
-				defaultValue={[100]}
+				defaultValue={[volume ?? 100]}
 				max={100}
 				step={1}
 				className="w-20"

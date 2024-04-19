@@ -7,6 +7,7 @@ export interface PlayerState {
 	title?: string;
 	playerState: EPlayerState;
 	isMuted?: boolean;
+	volume?: number;
 }
 
 const initialState: PlayerState = {

@@ -28,7 +28,6 @@ export type PlayerActions = Record<
 export const actions: PlayerActions = {
 	[EPlayerActionTypes.INIT]: (state, action) => {
 		const payload = action.payload as unknown as IYoutubePlayer;
-		console.log({ payload });
 		state.player = payload;
 		state.title = payload?.videoTitle;
 		state.playerState = EPlayerState.Unstarted;
@@ -48,6 +47,7 @@ export const actions: PlayerActions = {
 	[EPlayerActionTypes.CHANGE_VOLUME]: (state, action) => {
 		const volume = action.payload?.volume as number;
 		state.player?.setVolume(volume);
+		state.volume = volume;
 
 		if (volume === 0) {
 			state.isMuted = true;
