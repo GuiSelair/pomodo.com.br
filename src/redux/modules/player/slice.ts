@@ -4,8 +4,8 @@ import { EPlayerState, actions } from "./actions";
 
 export interface PlayerState {
 	player: IYoutubePlayer | null;
-	title?: string;
 	playerState: EPlayerState;
+	title?: string;
 	isMuted?: boolean;
 	volume?: number;
 }

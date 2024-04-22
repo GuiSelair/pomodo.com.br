@@ -30,6 +30,8 @@ export const actions: PlayerActions = {
 		const payload = action.payload as unknown as IYoutubePlayer;
 		state.player = payload;
 		state.title = payload?.videoTitle;
+		state.volume = payload?.getVolume();
+		state.isMuted = payload?.isMuted();
 		state.playerState = EPlayerState.Unstarted;
 	},
 	[EPlayerActionTypes.PLAY]: (state) => {
