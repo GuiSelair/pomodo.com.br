@@ -38,6 +38,7 @@ export const actions: PomodoroActions = {
 			}
 
 			state.isTakeBreak = true;
+			state.pomodoroCount += 1;
 			new Audio("/audios/finish-pomodoro.wav").play();
 			return;
 		}

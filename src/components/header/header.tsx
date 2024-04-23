@@ -26,9 +26,7 @@ export function Header() {
 					</strong>
 				</Badge>
 			</div>
-
 			<Navigation />
-
 			<SecondaryNavigation />
 		</header>
 	);

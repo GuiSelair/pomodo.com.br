@@ -7,6 +7,7 @@ export interface PomodoroState {
 	defaultPomodoroBreakTime: number;
 	defaultPomodoroLongBreakTime: number;
 	takeBreakCount: number;
+	pomodoroCount: number;
 	isTakeBreak: boolean;
 }
 
@@ -16,6 +17,7 @@ const initialState: PomodoroState = {
 	defaultPomodoroBreakTime: 60 * 5,
 	defaultPomodoroLongBreakTime: 60 * 15,
 	takeBreakCount: 0,
+	pomodoroCount: 0,
 	isTakeBreak: false,
 };
 
