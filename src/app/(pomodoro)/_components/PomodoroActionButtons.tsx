@@ -25,11 +25,19 @@ export function PomodoroActionButtons({
 	if (isPomodoroActive) {
 		return (
 			<div className="flex items-center gap-8">
-				<Button className="w-[112px] h-20" onClick={pauseTimer}>
+				<Button
+					id="pomodoro-pause-action-button"
+					className="w-[112px] h-20"
+					onClick={pauseTimer}
+				>
 					<PauseIcon className="w-10 h-10 text-pomodo-pink-300" />
 				</Button>
 				{!isTakeBreak && (
-					<Button className="w-[112px] h-20" onClick={stopTimer}>
+					<Button
+						id="pomodoro-stop-action-button"
+						className="w-[112px] h-20"
+						onClick={stopTimer}
+					>
 						<TimeResetIcon className="w-10 h-10 text-pomodo-pink-300" />
 					</Button>
 				)}
@@ -38,7 +46,11 @@ export function PomodoroActionButtons({
 	}
 
 	return (
-		<Button className="w-[112px] h-20" onClick={startTimer}>
+		<Button
+			id="pomodoro-start-action-button"
+			className="w-[112px] h-20"
+			onClick={startTimer}
+		>
 			<PlayIcon className="w-10 h-10 text-pomodo-pink-300" />
 		</Button>
 	);
