@@ -14,10 +14,10 @@ export function PomodoroCounter() {
 
 	function makeLeftUntilToLongBreakMessage() {
 		if (takeBreakCount === 4) {
-			return `Falta 1 pomodoro para a pausa longa`;
+			return `Falta 1 pausa para a pausa longa`;
 		}
 
-		return `Faltam ${4 - takeBreakCount} pomodoros para a pausa longa`;
+		return `Faltam ${4 - takeBreakCount} pausa para a pausa longa`;
 	}
 
 	return (
