@@ -17,7 +17,7 @@ export function PomodoroCounter() {
 			return `Falta 1 pausa para a pausa longa`;
 		}
 
-		return `Faltam ${4 - takeBreakCount} pausa para a pausa longa`;
+		return `Faltam ${4 - takeBreakCount} pausas para a pausa longa`;
 	}
 
 	return (
