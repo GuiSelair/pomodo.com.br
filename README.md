@@ -4,9 +4,9 @@
 
 ## Introdução 📝
 
-Esse é um projeto pessoal pra auxiliar no meu foco durante o dia de desenvolvimento. Ele foi projetado para atender um desejo meu de utilizar a técnica pomodoro ouvindo um Lo-Fi. Portanto, sempre que o timer pomodoro estiver ativo, uma música Lo-Fi estará tocando.
+Esse é um projeto pessoal para me ajudar a guiar meu foco durante o dia de desenvolvimento. Ele foi projetado para atender um desejo meu de utilizar a técnica pomodoro 🍅 ouvindo um Lo-Fi 🎵. Portanto, sempre que o timer pomodoro estiver ativo, uma música Lo-Fi estará tocando.
 
-Esse projeto ainda esta em caráter MVP, ou seja, muitas funcionalidades ainda não foram implementadas por completo mas já é um aplicativo funcional e útil para quem quer focar em uma atividade sem se preocupar com o relógio.
+Esse projeto ainda está em caráter MVP, ou seja, muitas funcionalidades ainda não foram implementadas por completo, mas já é um aplicativo funcional e útil para quem quer focar em uma atividade sem se preocupar com o relógio ⏰.
 
 ## Roadmap 🗺️
 
