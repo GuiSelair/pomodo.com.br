@@ -12,13 +12,13 @@ Esse projeto ainda esta em caráter MVP, ou seja, muitas funcionalidades ainda n
 
 - [x] :white_check_mark: Timer pomodoro integrado com player de música
 - [x] :white_check_mark: Player com controles de volume, mute e play/pause
-- [] Gerenciador de tarefas integrado com timer pomodoro
-- [] Tela de configurações gerais
-- [] Músicas do Player customizável
-- [] Tutorial guiado de utilização
-- [] Notificações
-- [] Politica de privacidade
-- [] Incorporação de ADS
+- [ ] Gerenciador de tarefas integrado com timer pomodoro
+- [ ] Tela de configurações gerais
+- [ ] Músicas do Player customizável
+- [ ] Tutorial guiado de utilização
+- [ ] Notificações
+- [ ] Politica de privacidade
+- [ ] Incorporação de ADS
 
 _OBS: O Rodmap listado não está em ordem de desenvolvimento._
 
