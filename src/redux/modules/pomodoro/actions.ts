@@ -27,14 +27,15 @@ export const actions: PomodoroActions = {
 		if (!payload.interrupt) {
 			if (state.isTakeBreak) {
 				state.isTakeBreak = false;
-				state.takeBreakCount += 1;
+
+				if (state.takeBreakCount === 4) {
+					state.takeBreakCount = 1;
+				} else {
+					state.takeBreakCount += 1;
+				}
+
 				new Audio("/audios/finish-break.wav").play();
 				return;
-			}
-
-			const shouldResetBreakCount = state.takeBreakCount === 5;
-			if (shouldResetBreakCount) {
-				state.takeBreakCount = 0;
 			}
 
 			state.isTakeBreak = true;
@@ -42,6 +43,7 @@ export const actions: PomodoroActions = {
 			new Audio("/audios/finish-pomodoro.wav").play();
 			return;
 		}
+
 		new Audio("/audios/tap.mp3").play();
 	},
 	[EPomodoroActionTypes.PAUSE]: (state) => {

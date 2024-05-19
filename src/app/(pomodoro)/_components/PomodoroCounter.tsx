@@ -13,14 +13,18 @@ export function PomodoroCounter() {
 	}
 
 	function makeLeftUntilToLongBreakMessage() {
+		if (takeBreakCount === 4 && pomodoroCount % 4 === 0) {
+			return `Aproveite sua pausa!`;
+		}
+
 		if (takeBreakCount === 4) {
-			return `A próxima pause será a maior`;
+			return `A próxima pausa será a maior`;
 		}
 
 		if (takeBreakCount === 3) {
 			return `Faltam 1 pausa para a pausa longa`;
 		}
-		
+
 		return `Faltam ${4 - takeBreakCount} pausas para a pausa longa`;
 	}
 
