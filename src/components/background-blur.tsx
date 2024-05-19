@@ -27,7 +27,7 @@ export function BackgroundBlur() {
 			</svg>
 
 			<svg
-				className="absolute top-0 left-[50%] right-0 transform -translate-x-1/2  animate-pulse"
+				className="absolute top-0 left-[50%] right-0 transform -translate-x-1/2 animate-pulse"
 				width="479"
 				height="255"
 				viewBox="0 0 479 255"
@@ -42,7 +42,7 @@ export function BackgroundBlur() {
 			</svg>
 
 			<svg
-				className="absolute bottom-0 right-0  animate-pulse"
+				className="absolute bottom-0 right-0 animate-pulse"
 				width="287"
 				height="402"
 				viewBox="0 0 287 402"

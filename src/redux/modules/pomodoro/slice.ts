@@ -16,7 +16,7 @@ const initialState: PomodoroState = {
 	defaultPomodoroTime: 60 * 25,
 	defaultPomodoroBreakTime: 60 * 5,
 	defaultPomodoroLongBreakTime: 60 * 15,
-	takeBreakCount: 0,
+	takeBreakCount: 1,
 	pomodoroCount: 0,
 	isTakeBreak: false,
 };
