@@ -11,7 +11,7 @@ export default function PomodoroPage() {
 
 	return (
 		<main className="flex flex-col items-center justify-center h-[calc(100vh-10rem)]">
-			<strong className="text-[200px] text-white font-nunito-sans font-bold">
+			<strong className="text-[120px] sm:text-[160px] md:text-[200px] text-white font-nunito-sans font-bold">
 				{formatTimerSecondToMinutes(timer)}
 			</strong>
 			<PomodoroActionButtons

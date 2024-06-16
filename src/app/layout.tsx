@@ -21,6 +21,7 @@ export default function RootLayout({
 	return (
 		<html lang="pt-BR">
 			<head>
+				<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 				<ScriptTag
 					id="Google Tag Manager-Script"
 					dangerouslySetInnerHTML={{
@@ -60,8 +61,10 @@ export default function RootLayout({
 						flex-col 
 						items-center 
 						bg-pomodo-gray-500
-						py-10 
-						px-14
+						py-8
+						px-4 
+						md:px-14
+						md:py-10
 						relative
 					"
 				>

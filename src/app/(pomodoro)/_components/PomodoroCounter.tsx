@@ -30,10 +30,10 @@ export function PomodoroCounter() {
 
 	return (
 		<div className="flex items-center gap-3 mt-6">
-			<span className="bg-zinc-700 p-2 rounded text-gray-300 text-sm">
+			<span className="bg-zinc-700 p-2 rounded text-gray-300 text-xs sm:text-sm text-center">
 				{makePomodoCompletedMessage()}
 			</span>
-			<span className="bg-zinc-700 p-2 rounded text-gray-300 text-sm">
+			<span className="bg-zinc-700 p-2 rounded text-gray-300 text-xs sm:text-sm text-center">
 				{makeLeftUntilToLongBreakMessage()}
 			</span>
 		</div>
