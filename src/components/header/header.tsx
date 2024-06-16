@@ -3,7 +3,6 @@
 import { Badge } from "@/components/ui/badge";
 import { PomodoLogo } from "@/components/pomodo-logo";
 
-import { Navigation } from "./navigation";
 import { SecondaryNavigation } from "./secondary-navigation";
 
 export function Header() {
