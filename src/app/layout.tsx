@@ -22,6 +22,7 @@ export default function RootLayout({
 		<html lang="pt-BR">
 			<head>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+				<meta name="google-adsense-account" content="ca-pub-3489651549797034"/>
 				<ScriptTag
 					id="Google Tag Manager-Script"
 					dangerouslySetInnerHTML={{
