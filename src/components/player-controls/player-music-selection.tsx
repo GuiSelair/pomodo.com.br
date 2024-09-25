@@ -44,8 +44,9 @@ export function PlayerMusicSelection() {
             className="text-sm text-gray-800 bg-gray-100 flex-1"
             value={videoId}
             onChange={(e) => setVideoId(e.target.value)}
+            id="player-music-id-input"
           />
-          <Button variant={'outline'} onClick={handleLoadVideo} className="flex items-center gap-2">
+          <Button variant={'outline'} onClick={handleLoadVideo} className="flex items-center gap-2" id="player-load-video-button">
             Buscar
             <MagnifyingGlass />
           </Button>

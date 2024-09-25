@@ -73,7 +73,7 @@ export function PlayerControls() {
 					${cn(isOpen ? "h-auto opacity-100 visible pt-3" : "h-0 opacity-0 invisible")}
 				`}
 			>
-				<div className="flex items-center justify-center mb-4 w-full h-[320px]">
+				<div className="flex items-center justify-center mb-4 w-full h-[320px]" id="player-youtube-container">
 					<YoutubePlayer />
 				</div>
 				<div className="mt-auto flex justify-between items-center gap-3">
