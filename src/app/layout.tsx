@@ -10,7 +10,15 @@ import { BackgroundBlur } from "@/components/background-blur";
 import { ReduxProvider } from "@/redux/provider";
 
 export const metadata: Metadata = {
-	title: "pomodo - Focus on your work, not the clock",
+	title: "pomodo - Foque em seu trabalho, esqueça o relógio",
+	description: "Aumente sua produtividade com o Pomodo! Organize suas tarefas e gerencie seu tempo com a técnica Pomodoro. Mantenha o foco e alcance seus objetivos diários de forma eficiente e simples.",
+	keywords: "produtividade, Pomodoro, gestão de tempo, foco, tarefas, produtividade diária, Pomodo, pomodo",
+	category: "produtividade",
+	openGraph: {
+		title: "pomodo - Foque em seu trabalho, esqueça o relógio",
+		description: "Aumente sua produtividade com o Pomodo! Organize suas tarefas e gerencie seu tempo com a técnica Pomodoro. Mantenha o foco e alcance seus objetivos diários de forma eficiente e simples.",
+		url: "https://pomodo.com.br",
+	},
 };
 
 export default function RootLayout({
@@ -44,16 +52,6 @@ export default function RootLayout({
 					fonts.inter.variable
 				)}
 			>
-				{/* Google Tag Manager */}
-				<noscript>
-					<iframe
-						src="https://www.googletagmanager.com/ns.html?id=GTM-P2N7RCLP"
-						height="0"
-						width="0"
-						style={{ display: "none", visibility: "hidden" }}
-						title="Google Tag Manager"
-					></iframe>
-				</noscript>
 				<div
 					className="
 						min-h-screen
