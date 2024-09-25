@@ -33,7 +33,8 @@ export function PlayerControls() {
 	}
 
 	return (
-		<Collapsible 
+		<Collapsible
+			id="player-controls"
 			open={isOpen} 
 			onOpenChange={setIsOpen}
 			className={`
