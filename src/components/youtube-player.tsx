@@ -16,9 +16,15 @@ export function YoutubePlayer() {
 
 		window.onYouTubeIframeAPIReady = () => {
 			new YT.Player("youtube-player", {
-				height: "200",
-				width: "400",
+				height: "220",
+				width: "410",
 				videoId: "HGp7iu5XgCg",
+				playerVars: {
+					controls: 0,
+					loop: 1,
+					modestbranding: 1,
+					showinfo: 0,
+				},
 				events: {
 					onReady: ({ target }) => {
 						dispatch(
@@ -31,10 +37,10 @@ export function YoutubePlayer() {
 
 		return () => {
 			if (player) {
-				player.destroy();
+				player?.destroy();
 			}
 		};
 	}, [player]);
 
-	return <div id="youtube-player" className="hidden" />;
+	return <div id="youtube-player" />;
 }

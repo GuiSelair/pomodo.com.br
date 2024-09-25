@@ -10,7 +10,6 @@ export function ReduxProvider({
 }: Readonly<React.PropsWithChildren<{}>>) {
 	return (
 		<Provider store={store}>
-			<YoutubePlayer />
 			{children}
 		</Provider>
 	);

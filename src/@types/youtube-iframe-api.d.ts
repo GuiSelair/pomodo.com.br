@@ -10,6 +10,11 @@ interface IYoutubePlayer {
 	setVolume: (volume: number) => void;
 	destroy: () => void;
 	getPlayerState: () => number;
+	loadVideoById: (videoId: string) => void;
+	loadPlaylist: (data: {
+		list: string
+		listType: 'playlist'
+	}) => void;
 }
 
 interface IYoutubePlayerEvent {
@@ -20,8 +25,15 @@ interface IYoutubePlayerOptions {
 	height: string;
 	width: string;
 	videoId: string;
+	playerVars: {
+		controls?: 0 | 1 | 2;
+		loop?: 0 | 1;
+		modestbranding?: 1 | 0;
+		showinfo?: 1 | 0;
+	};
 	events?: {
 		onReady?: (target: IYoutubePlayerEvent) => void;
+		onStateChange?: (target: IYoutubePlayerEvent) => void;
 	};
 }
 
