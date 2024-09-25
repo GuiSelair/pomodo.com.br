@@ -57,10 +57,11 @@ export function PlayerControls() {
 		>
 			<CollapsibleTrigger 
 				className="w-full flex items-center justify-between"
+				id="player-controls"
 			>
 				<div className="flex items-center gap-2">
 					<MusicNotes className={`text-pomodo-pink-300 w-5 h-5 ${cn(isPlaying ? "animate-pulse" : "")}`} />
-					<span className="text-sm text-gray-300">
+					<span className="text-sm text-gray-300" id="player-controls">
 						{makeCollapsibleTitle()}
 					</span>
 				</div>

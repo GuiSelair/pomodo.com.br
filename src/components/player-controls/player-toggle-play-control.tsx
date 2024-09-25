@@ -12,9 +12,9 @@ export function PlayerTogglePlayControl() {
 	return (
 		<Button size="icon" onClick={() => dispatch(playerActions.togglePlay())} id="player-toggle-play-control">
 			{playerState === EPlayerState.Playing ? (
-				<PauseIcon className="w-6 h-6 text-pomodo-pink-300" />
+				<PauseIcon className="w-6 h-6 text-pomodo-pink-300" id="player-toggle-play-control" />
 			) : (
-				<PlayIcon className="w-6 h-6 text-pomodo-pink-300" />
+				<PlayIcon className="w-6 h-6 text-pomodo-pink-300" id="player-toggle-play-control" />
 			)}
 		</Button>
 	);
