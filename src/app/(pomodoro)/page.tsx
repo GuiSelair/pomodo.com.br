@@ -2,12 +2,12 @@
 
 import { usePomodoro } from "@/hooks/use-pomodoro";
 import { formatTimerSecondToMinutes } from "@/helpers/format-timer";
-import { PomodoroActionButtons } from "./_components/PomodoroActionButtons";
-import { PomodoroCounter } from "./_components/PomodoroCounter";
+import { PomodoroActionButtons } from "./_components/pomodoro-action-buttons";
+import { PomodoroCounter } from "./_components/pomodoro-counter";
 import { PlayerControls } from "@/components/player-controls";
 
 export default function PomodoroPage() {
-	const { timer, handlePauseTime, handleStartTime, handleStopTime } =
+	const { timer, handlePauseTime, handleStartTime, handleStopTime, handleSkipBreak } =
 		usePomodoro();
 
 	return (
@@ -20,6 +20,7 @@ export default function PomodoroPage() {
 				startTimer={handleStartTime}
 				stopTimer={handleStopTime}
 				pauseTimer={handlePauseTime}
+				skipBreak={handleSkipBreak}
 			/>
 			<PomodoroCounter />
 		</main>

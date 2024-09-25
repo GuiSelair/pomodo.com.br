@@ -29,7 +29,7 @@ export function PlayerMusicSelection() {
 
   return (
     <div className="flex flex-col gap-2">
-      <span className="text-md font-light text-gray-300">Escute suas músicas favoritas enquanto trabalha</span>
+      <span className="text-md font-medium text-gray-100">Escute suas músicas favoritas enquanto trabalha</span>
       <div className="flex items-start flex-col w-full gap-2 mt-1">
         <div className="flex items-center gap-2">
           <Switch id="player-mode" checked={playerMode === "playlist"} onCheckedChange={handlePlayerModeChange} />
@@ -51,11 +51,11 @@ export function PlayerMusicSelection() {
           </Button>
         </div>
         <div className="flex flex-col gap-2 mt-1">
-          <strong className="text-xs text-gray-400">Exemplos:</strong>
-          <span className="text-xs text-gray-400">
+          <strong className="text-xs text-gray-200">Exemplos:</strong>
+          <span className="text-xs text-gray-200">
             <strong>Playlist:</strong> https://www.youtube.com/playlist?list=<strong>PLOzDu-MXXLliO9fBNZOQTBDddoA3FzZUo</strong>
           </span>
-          <span className="text-xs text-gray-400">
+          <span className="text-xs text-gray-200">
             <strong>Vídeo:</strong> https://www.youtube.com/watch?v=<strong>HGp7iu5XgCg</strong>
           </span>
         </div>

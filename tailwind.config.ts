@@ -68,10 +68,31 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "float-1": {
+          "0%, 100%": { transform: "translate(0, 0) scale(1) rotate(0deg)" },
+          "25%": { transform: "translate(80px, -80px) scale(1.05) rotate(15deg)" },
+          "50%": { transform: "translate(0, -160px) scale(1.1) rotate(30deg)" },
+          "75%": { transform: "translate(-80px, -80px) scale(1.05) rotate(15deg)" },
+        },
+        "float-2": {
+          "0%, 100%": { transform: "translate(0, 0) scale(1) rotate(0deg)" },
+          "25%": { transform: "translate(-120px, 120px) scale(1.16) rotate(-20deg)" },
+          "50%": { transform: "translate(-240px, 0) scale(1.3) rotate(-40deg)" },
+          "75%": { transform: "translate(-120px, -120px) scale(1.16) rotate(-20deg)" },
+        },
+        "float-3": {
+          "0%, 100%": { transform: "translate(0, 0) scale(1) rotate(0deg)" },
+          "25%": { transform: "translate(100px, 100px) scale(1.16) rotate(25deg)" },
+          "50%": { transform: "translate(200px, 0) scale(2.5) rotate(50deg)" },
+          "75%": { transform: "translate(100px, -100px) scale(1.16) rotate(25deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.4s ease-out",
         "accordion-up": "accordion-up 0.4s ease-out",
+        "float-1": "float-1 20s ease-in-out infinite",
+        "float-2": "float-2 25s ease-in-out infinite",
+        "float-3": "float-3 22s ease-in-out infinite",
       },
 			fontFamily: {
 				'nunito-sans': ["var(--font-nunito-sans)", ...fontFamily.sans],

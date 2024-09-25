@@ -49,6 +49,16 @@ export function usePomodoro() {
 		}
 	}
 
+	function handleSkipBreak() {
+		dispatch(pomodoroActions.stop({ interrupt: false }));
+		if (pomodoroWorkerRef.current) {
+			pomodoroWorkerRef.current.postMessage({
+				eventType: "stopTimer",
+				initialTimeValue: defaultPomodoroTime,
+			} as PomodoroWorkerMessage);
+		}
+	}
+
 	function finishPomodoro() {
 		dispatch(pomodoroActions.stop({ interrupt: false }));
 		dispatch(playerActions.pause());
@@ -118,6 +128,7 @@ export function usePomodoro() {
 		handleStartTime,
 		handleStopTime,
 		handlePauseTime,
+		handleSkipBreak,
 		timer,
 	};
 }

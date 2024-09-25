@@ -16,8 +16,8 @@ export function YoutubePlayer() {
 
 		window.onYouTubeIframeAPIReady = () => {
 			new YT.Player("youtube-player", {
-				height: "220",
-				width: "410",
+				height: "320",
+				width: "490",
 				videoId: "HGp7iu5XgCg",
 				playerVars: {
 					controls: 0,

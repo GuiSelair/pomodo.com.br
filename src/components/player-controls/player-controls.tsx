@@ -48,10 +48,10 @@ export function PlayerControls() {
 				-translate-x-1/2
 				border
 				border-transparent
-				hover:border-pomodo-pink-300/80
+				hover:border-pomodo-pink-300/70
 				transition-all
 				duration-200
-				${cn(isOpen ? "w-[460px]" : "w-[320px]")}
+				${cn(isOpen ? "w-full md:w-[560px]" : "w-[320px]")}
 			`}
 		>
 			<CollapsibleTrigger 
@@ -69,17 +69,17 @@ export function PlayerControls() {
 				forceMount 
 				className={`
 					overflow: hidden;
-					${cn(isOpen ? "h-auto opacity-100 visible pt-3 animate-accordion-down" : "h-0 opacity-0 invisible animate-accordion-up")}
+					${cn(isOpen ? "h-auto opacity-100 visible pt-3" : "h-0 opacity-0 invisible")}
 				`}
 			>
-				<div className="flex items-center justify-center mb-4 w-full h-[220px]">
+				<div className="flex items-center justify-center mb-4 w-full h-[320px]">
 					<YoutubePlayer />
 				</div>
 				<div className="mt-auto flex justify-between items-center gap-3">
 					<PlayerTogglePlayControl />
 					<PlayerVolumeControl />
 				</div>
-				<Separator className="my-5" />
+				<Separator className="my-2 bg-pomodo-purple-400/80" />
 				<PlayerMusicSelection />
 			</CollapsibleContent>
 		</Collapsible>

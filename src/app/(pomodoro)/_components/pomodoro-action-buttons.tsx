@@ -11,9 +11,11 @@ interface PomodoroActionButtonsProps {
 	startTimer: () => void;
 	stopTimer: () => void;
 	pauseTimer: () => void;
+	skipBreak: () => void;
 }
 
 export function PomodoroActionButtons({
+	skipBreak,
 	pauseTimer,
 	startTimer,
 	stopTimer,
@@ -35,18 +37,16 @@ export function PomodoroActionButtons({
 						className="w-8 lg:w-10 h-8 lg:h-10 text-pomodo-pink-300"
 					/>
 				</Button>
-				{!isTakeBreak && (
-					<Button
+				<Button
+					id="pomodoro-stop-action-button"
+					className="w-20 lg:w-28 h-14 lg:h-20"
+					onClick={isTakeBreak ? skipBreak : stopTimer}
+				>
+					<TimeResetIcon
 						id="pomodoro-stop-action-button"
-						className="w-20 lg:w-28 h-14 lg:h-20"
-						onClick={stopTimer}
-					>
-						<TimeResetIcon
-							id="pomodoro-stop-action-button"
-							className="w-8 lg:w-10 h-8 lg:h-10 text-pomodo-pink-300"
-						/>
-					</Button>
-				)}
+						className="w-8 lg:w-10 h-8 lg:h-10 text-pomodo-pink-300"
+					/>
+				</Button>
 			</div>
 		);
 	}
