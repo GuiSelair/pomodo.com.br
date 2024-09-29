@@ -6,7 +6,7 @@ export function BackgroundBlur() {
 				top-0 
 				left-0 
 				w-full 
-				h-full 
+				h-screen
 				pointer-events-none
 				overflow-hidden
 				blur-[90px]
