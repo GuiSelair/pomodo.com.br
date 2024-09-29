@@ -28,7 +28,7 @@ export default function PomodoroPage() {
 			<section className="flex flex-col min-h-screen max-w-4xl mx-auto text-gray-100 bg-zinc-700/40 p-8 rounded-md backdrop-blur-sm border border-zinc-600/60">
 				<h2 className="text-3xl font-bold mb-6 text-white">O que é a Técnica Pomodoro?</h2>
 				<p className="mb-6">
-					A técnica Pomodoro é uma estratégia simples e eficaz de gestão de tempo, criada para melhorar o foco e a produtividade. Ela funciona dividindo seu trabalho em blocos de 25 minutos, chamados de "Pomodoros", seguidos por uma breve pausa. Após quatro ciclos, uma pausa maior é recomendada para descanso.
+					A técnica Pomodoro é uma estratégia simples e eficaz de gestão de tempo, criada para melhorar o foco e a produtividade. Ela funciona dividindo seu trabalho em blocos de 25 minutos, chamados de Pomodoros, seguidos por uma breve pausa. Após quatro ciclos, uma pausa maior é recomendada para descanso.
 				</p>
 
 				<h3 className="text-2xl font-semibold mb-4 text-white">Como Funciona o Pomodo?</h3>
