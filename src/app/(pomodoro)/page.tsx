@@ -1,14 +1,17 @@
 "use client";
 
-import { Suspense } from "react";
+import dynamic from "next/dynamic";
 
 import { usePomodoro } from "@/hooks/use-pomodoro";
 import { useResponsive } from "@/hooks/use-responsive";
 import { formatTimerSecondToMinutes } from "@/helpers/format-timer";
 import { PlayerControls } from "@/components/player-controls";
-import { AdsterraAd } from "@/components/ads-terra-ad";
+// import { AdsterraAd } from "@/components/ads-terra-ad";
 import { PomodoroActionButtons } from "./_components/pomodoro-action-buttons";
 import { PomodoroCounter } from "./_components/pomodoro-counter";
+import { Suspense } from "react";
+
+const AdsterraAd = dynamic(() => import('@/components/ads-terra-ad').then(c => c.AdsterraAd), { ssr: false })
 
 export default function PomodoroPage() {
 	const { timer, handlePauseTime, handleStartTime, handleStopTime, handleSkipBreak } =
@@ -17,7 +20,7 @@ export default function PomodoroPage() {
 	const { isDesktop } = useResponsive({ shouldListen: false });
 
 	return (
-		<Suspense>
+		<>
 			<main className="flex flex-col items-center justify-center h-screen relative">
 				<PlayerControls/>
 				<strong className="text-[120px] sm:text-[160px] md:text-[200px] text-white font-nunito-sans font-bold">
@@ -30,13 +33,15 @@ export default function PomodoroPage() {
 					skipBreak={handleSkipBreak}
 				/>
 				<PomodoroCounter />
-				<div className="w-[350px] md:w-full overflow-hidden flex items-center justify-center">
-					{isDesktop ? (
-						<AdsterraAd id="9706afb76b1e9f15e69ae4640e529b10" width={728} height={90} className="mt-20" />
-					) : (
-						<AdsterraAd id="4e778751366749d56339a9fc28a62fee" width={320} height={50} className="mt-10" />
-					)}
-				</div>
+				<Suspense>
+					<div className="w-[350px] h-[180px] md:w-full overflow-hidden flex items-center justify-center">
+						{isDesktop ? (
+							<AdsterraAd id="9706afb76b1e9f15e69ae4640e529b10" width={728} height={90} className="mt-20" />
+						) : (
+							<AdsterraAd id="4e778751366749d56339a9fc28a62fee" width={320} height={50} className="mt-10" />
+						)}
+					</div>
+				</Suspense>
 			</main>
 			<section className="flex flex-col max-w-4xl mx-auto text-gray-100 bg-zinc-700/40 p-8 rounded-md backdrop-blur-sm border border-zinc-600/60">
 				<h2 className="text-3xl font-bold mb-6 text-white">O que é a Técnica Pomodoro?</h2>
@@ -64,6 +69,6 @@ export default function PomodoroPage() {
 					Use nosso contador para começar a melhorar sua produtividade agora mesmo. Organize seu trabalho, faça pausas estratégicas e maximize seus resultados com a ajuda da técnica Pomodoro.
 				</p>
 			</section>
-		</Suspense>
+		</>
 	);
 }
