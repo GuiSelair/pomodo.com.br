@@ -1,14 +1,18 @@
 "use client";
 
 import { usePomodoro } from "@/hooks/use-pomodoro";
+import { useResponsive } from "@/hooks/use-responsive";
 import { formatTimerSecondToMinutes } from "@/helpers/format-timer";
+import { PlayerControls } from "@/components/player-controls";
+import { AdsterraAd } from "@/components/ads-terra-ad";
 import { PomodoroActionButtons } from "./_components/pomodoro-action-buttons";
 import { PomodoroCounter } from "./_components/pomodoro-counter";
-import { PlayerControls } from "@/components/player-controls";
 
 export default function PomodoroPage() {
 	const { timer, handlePauseTime, handleStartTime, handleStopTime, handleSkipBreak } =
 		usePomodoro();
+
+	const { isDesktop } = useResponsive({ shouldListen: false });
 
 	return (
 		<>
@@ -24,8 +28,15 @@ export default function PomodoroPage() {
 					skipBreak={handleSkipBreak}
 				/>
 				<PomodoroCounter />
+				<div className="w-[350px] md:w-full overflow-hidden flex items-center justify-center">
+					{isDesktop ? (
+						<AdsterraAd id="9706afb76b1e9f15e69ae4640e529b10" width={728} height={90} className="mt-20" />
+					) : (
+						<AdsterraAd id="4e778751366749d56339a9fc28a62fee" width={320} height={50} className="mt-10" />
+					)}
+				</div>
 			</main>
-			<section className="flex flex-col min-h-screen max-w-4xl mx-auto text-gray-100 bg-zinc-700/40 p-8 rounded-md backdrop-blur-sm border border-zinc-600/60">
+			<section className="flex flex-col max-w-4xl mx-auto text-gray-100 bg-zinc-700/40 p-8 rounded-md backdrop-blur-sm border border-zinc-600/60">
 				<h2 className="text-3xl font-bold mb-6 text-white">O que é a Técnica Pomodoro?</h2>
 				<p className="mb-6">
 					A técnica Pomodoro é uma estratégia simples e eficaz de gestão de tempo, criada para melhorar o foco e a produtividade. Ela funciona dividindo seu trabalho em blocos de 25 minutos, chamados de Pomodoros, seguidos por uma breve pausa. Após quatro ciclos, uma pausa maior é recomendada para descanso.
@@ -50,7 +61,6 @@ export default function PomodoroPage() {
 				<p>
 					Use nosso contador para começar a melhorar sua produtividade agora mesmo. Organize seu trabalho, faça pausas estratégicas e maximize seus resultados com a ajuda da técnica Pomodoro.
 				</p>
-				<div id="add-box" className="w-full h-[200px] mt-auto"/>
 			</section>
 		</>
 	);
