@@ -1,10 +1,12 @@
 import { useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 import { useAppDispatch, useAppSelector } from "@/redux";
 import { playerActions } from "@/redux/modules/player";
 
 export function YoutubePlayer() {
 	const dispatch = useAppDispatch();
+	const searchParams = useSearchParams()
 	const player = useAppSelector((ctx) => ctx.player.player);
 
 	useEffect(() => {
@@ -14,11 +16,12 @@ export function YoutubePlayer() {
 		const firstScriptTag = document.getElementsByTagName("script")[0];
 		firstScriptTag.parentNode!.insertBefore(tag, firstScriptTag);
 
+		const videoId = searchParams.get("v") || "HGp7iu5XgCg";
 		window.onYouTubeIframeAPIReady = () => {
 			new YT.Player("youtube-player", {
 				height: "320",
 				width: "490",
-				videoId: "HGp7iu5XgCg",
+				videoId: videoId,
 				playerVars: {
 					controls: 0,
 					loop: 1,

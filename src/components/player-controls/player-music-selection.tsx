@@ -9,10 +9,10 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 
 export function PlayerMusicSelection() {
-  const [playerMode, setPlayerMode] = useState<"playlist" | "video">("video");
   const dispatch = useAppDispatch();
-  const [videoId, setVideoId] = useState<string>("");
   const player = useAppSelector((ctx) => ctx.player.player);
+  const [playerMode, setPlayerMode] = useState<"playlist" | "video">("video");
+  const [videoId, setVideoId] = useState<string>("");
 
   function handlePlayerModeChange() {
     setPlayerMode(playerMode === "playlist" ? "video" : "playlist");
