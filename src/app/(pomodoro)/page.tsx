@@ -1,5 +1,7 @@
 "use client";
 
+import { Suspense } from "react";
+
 import { usePomodoro } from "@/hooks/use-pomodoro";
 import { useResponsive } from "@/hooks/use-responsive";
 import { formatTimerSecondToMinutes } from "@/helpers/format-timer";
@@ -15,7 +17,7 @@ export default function PomodoroPage() {
 	const { isDesktop } = useResponsive({ shouldListen: false });
 
 	return (
-		<>
+		<Suspense>
 			<main className="flex flex-col items-center justify-center h-screen relative">
 				<PlayerControls/>
 				<strong className="text-[120px] sm:text-[160px] md:text-[200px] text-white font-nunito-sans font-bold">
@@ -62,6 +64,6 @@ export default function PomodoroPage() {
 					Use nosso contador para começar a melhorar sua produtividade agora mesmo. Organize seu trabalho, faça pausas estratégicas e maximize seus resultados com a ajuda da técnica Pomodoro.
 				</p>
 			</section>
-		</>
+		</Suspense>
 	);
 }

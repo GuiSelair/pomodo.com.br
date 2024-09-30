@@ -1,4 +1,5 @@
 'use client';
+
 import { useEffect, useState } from "react";
 
 interface UseResponsiveProps {
@@ -12,15 +13,18 @@ export function useResponsive({ shouldListen = true }: UseResponsiveProps = {}) 
     onResizeHandler();
     
     if (shouldListen) {
-      setup();
+      if (typeof window === 'undefined') return;
+      window.addEventListener("resize", onResizeHandler, false);
     }
 
     return () => {
-      cleanup();
+      if (typeof window === 'undefined') return;
+      window.removeEventListener("resize", onResizeHandler, false);
     };
   }, []);
 
   function getResponsive() {
+    if (typeof window === 'undefined') return { isMobile: false, isTablet: false, isDesktop: false };
     const isMobile = window.innerWidth <= 768;
     const isTablet = window.innerWidth >= 768 && window.innerWidth <= 990;
     const isDesktop = window.innerWidth > 990;
@@ -32,14 +36,6 @@ export function useResponsive({ shouldListen = true }: UseResponsiveProps = {}) 
     const { isMobile, isTablet, isDesktop } = getResponsive();
 
     setState({ isMobile, isTablet, isDesktop });
-  };
-
-  function setup() {
-    window.addEventListener("resize", onResizeHandler, false);
-  };
-
-  function cleanup() {
-    window.removeEventListener("resize", onResizeHandler, false);
   };
   
   return state;
