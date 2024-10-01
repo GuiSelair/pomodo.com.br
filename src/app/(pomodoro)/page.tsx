@@ -23,7 +23,7 @@ export default function PomodoroPage() {
 		<>
 			<main className="flex flex-col items-center justify-center h-screen relative">
 				<PlayerControls/>
-				<strong className="text-[120px] sm:text-[160px] md:text-[200px] text-white font-nunito-sans font-bold">
+				<strong className="text-[130px] sm:text-[170px] md:text-[260px] text-white font-nunito-sans font-bold">
 					{formatTimerSecondToMinutes(timer)} 
 				</strong>
 				<PomodoroActionButtons
