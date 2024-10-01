@@ -6,7 +6,6 @@ import { usePomodoro } from "@/hooks/use-pomodoro";
 import { useResponsive } from "@/hooks/use-responsive";
 import { formatTimerSecondToMinutes } from "@/helpers/format-timer";
 import { PlayerControls } from "@/components/player-controls";
-// import { AdsterraAd } from "@/components/ads-terra-ad";
 import { PomodoroActionButtons } from "./_components/pomodoro-action-buttons";
 import { PomodoroCounter } from "./_components/pomodoro-counter";
 import { Suspense } from "react";

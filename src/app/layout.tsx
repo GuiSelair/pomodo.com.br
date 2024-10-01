@@ -18,6 +18,13 @@ export const metadata: Metadata = {
 		title: "pomodo - Foque em seu trabalho, esqueça o relógio",
 		description: "Aumente sua produtividade com o Pomodo! Organize suas tarefas e gerencie seu tempo com a técnica Pomodoro. Mantenha o foco e alcance seus objetivos diários de forma eficiente e simples.",
 		url: "https://pomodo.com.br",
+		images: [
+			{
+				url: "https://www.pomodo.com.br/cover.jpg",
+				width: 1920,
+				height: 1080,
+			},
+		],
 	},
 };
 
