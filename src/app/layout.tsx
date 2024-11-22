@@ -10,12 +10,12 @@ import { BackgroundBlur } from "@/components/background-blur";
 import { ReduxProvider } from "@/redux/provider";
 
 export const metadata: Metadata = {
-	title: "pomodo - Foque em seu trabalho, esqueça o relógio",
-	description: "Aumente sua produtividade com o Pomodo! Organize suas tarefas e gerencie seu tempo com a técnica Pomodoro. Mantenha o foco e alcance seus objetivos diários de forma eficiente e simples.",
+	title: "pomodo - Foque no que interessa, esqueça o relógio",
+	description: "Aumente sua produtividade com o Pomodo! Organize suas tarefas e gerencie seu tempo com a técnica Pomodoro. Mantenha o foco e alcance seus objetivos.",
 	keywords: "produtividade, Pomodoro, gestão de tempo, foco, tarefas, produtividade diária, Pomodo, pomodo",
 	category: "produtividade",
 	openGraph: {
-		title: "pomodo - Foque em seu trabalho, esqueça o relógio",
+		title: "pomodo - Foque no que interessa, esqueça o relógio",
 		description: "Aumente sua produtividade com o Pomodo! Organize suas tarefas e gerencie seu tempo com a técnica Pomodoro. Mantenha o foco e alcance seus objetivos diários de forma eficiente e simples.",
 		url: "https://pomodo.com.br",
 		images: [
@@ -37,6 +37,8 @@ export default function RootLayout({
 		<html lang="pt-BR">
 			<head>
 				<meta name="google-adsense-account" content="ca-pub-3489651549797034"/>
+				<link rel="canonical" href="https://www.pomodo.com.br/" key="canonical" />
+				<meta name="robots" content="index, follow"/>
 				<ScriptTag
 					id="Google Tag Manager-Script"
 					dangerouslySetInnerHTML={{
@@ -59,19 +61,7 @@ export default function RootLayout({
 				)}
 			>
 				<div
-					className="
-						min-h-screen
-						min-w-screen
-						flex 
-						flex-col 
-						items-center 
-						bg-pomodo-gray-500
-						py-8
-						px-4 
-						md:px-14
-						md:py-10
-						relative
-					"
+					className="min-h-screen min-w-screen flex flex-col items-center bg-pomodo-gray-500 py-8 px-4 md:px-14 md:py-10 relative"
 				>
 					<ReduxProvider>
 						<Header />
