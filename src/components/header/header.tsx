@@ -21,7 +21,7 @@ export function Header() {
 				<PomodoLogo />
 				<Badge variant="secondary" className="px-1 py-0">
 					<strong className="text-pomodo-gray-500 font-nunito text-[10px] font-extrabold ">
-						MVP
+						BETA
 					</strong>
 				</Badge>
 			</div>
